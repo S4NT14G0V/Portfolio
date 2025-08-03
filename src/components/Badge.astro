@@ -1,0 +1,21 @@
+---
+interface Props {
+  text: string;
+}
+const { text } = Astro.props;
+---
+
+<style>
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.85; }
+  }
+
+  .blink {
+    animation: blink 2s ease-in-out infinite;
+  }
+</style>
+
+<div class="self-center sm:self-start bg-[#c5ffca] border-2 border-[#00771a33] backdrop-blur-2xl font-semibold text-[#1b8d20] py-1 px-3 rounded-lg text-xs text-center blink">
+  {text}
+</div>

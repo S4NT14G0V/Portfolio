@@ -1,0 +1,26 @@
+---
+import Theme from '../components/Theme.astro';
+---
+
+<header id="mainHeader" class="w-full flex justify-center items-center py-5 px-4 sm:px-12 lg:px-48 fixed top-0 z-40 transition-all duration-300">
+  <nav class="flex gap-1 flex-wrap justify-center items-center">
+    <a href="#about" class="w-20 text-center hover:bg-[#0000000d] dark:hover:bg-[#ffffff0d] py-1 px-2 rounded-lg transition">About</a>
+    <a href="#experiences" class="w-30 text-center hover:bg-[#0000000d] dark:hover:bg-[#ffffff0d] py-1 px-2 rounded-lg transition">Experiences</a>
+    <a href="#studies" class="w-20 text-center hover:bg-[#0000000d] dark:hover:bg-[#ffffff0d] py-1 px-2 rounded-lg transition">Studies</a>
+    <a href="#projects" class="w-20 text-center hover:bg-[#0000000d] dark:hover:bg-[#ffffff0d] py-1 px-2 rounded-lg transition">Projects</a>
+    <a href="#contact" class="w-20 text-center hover:bg-[#0000000d] dark:hover:bg-[#ffffff0d] py-1 px-2 rounded-lg transition">Contact</a>
+  </nav>
+  <Theme />
+</header>
+
+<script>
+  const header = document.getElementById('mainHeader') as HTMLElement;
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 0) {
+      header.classList.add('dark:backdrop-brightness-70', 'backdrop-blur-sm');
+    } else {
+      header.classList.remove('dark:backdrop-brightness-70', 'backdrop-blur-sm');
+    }
+  });
+</script>

@@ -1,0 +1,45 @@
+---
+import Location from './Location.astro';
+
+interface Props {
+  title: string;
+  date: string;
+  location: string;
+  description: string;
+}
+
+const { title, date, location, description } = Astro.props;
+---
+
+<li class="mb-10 ms-6">
+  <span
+    class="absolute flex items-center justify-center w-6 h-6 bg-blue-200 rounded-full -start-3 ring-6 ring-blue-100 dark:ring-white/10 dark:bg-white/20"
+  >
+    <svg
+      class="w-2.5 h-2.5 text-blue-800 dark:text-blue-300"
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="currentColor"
+      viewBox="0 0 20 20"
+    >
+      <path
+        d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"
+      ></path>
+    </svg>
+  </span>
+  <div class="flex items-center gap-4 mb-2">
+    <h3
+      class="flex items-center text-lg font-semibold text-gray-900 dark:text-white"
+    >
+      {title}
+    </h3>
+    <time
+      class="block text-md font-normal leading-none text-[#6900e2] dark:text-[#e7b5ff]" 
+      >{date}</time
+    >
+  </div>
+  <Location size={"md"} location={location}/>
+  <p class="mb-4 text-base font-normal text-black/70 dark:text-[#ccc]">
+    {description}
+  </p>
+</li>

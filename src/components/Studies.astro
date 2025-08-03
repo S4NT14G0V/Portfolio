@@ -1,0 +1,25 @@
+---
+import StudiesItem from "./StudiesItem.astro";
+
+interface Studies {
+  title: string;
+  date: string;
+  location: string;
+  description: string;
+}
+
+const STUDIES: Studies[] = [
+  {
+    title: "Systems Engineering",
+    date: "2027",
+    location: "University of Antioquia | Medellín, Colombia.",
+    description: `I am currently pursuing a degree in Systems Engineering, where I have built a solid foundation in programming, data structures, databases, networking, and software development. The program combines theory and practical application, allowing me to work on academic projects and participate in initiatives that have strengthened my technical skills and my ability to solve real-world problems.`,
+  },
+];
+---
+
+<ul
+  class="relative w-full border-s border-black/40 dark:border-gray-700 flex flex-col gap-10"
+>
+  {STUDIES.map((study) => <StudiesItem {...study} />)}
+</ul>

@@ -1,0 +1,37 @@
+---
+import ExperienceItem from "./ExperienceItem.astro";
+
+interface Experience {
+  title: string;
+  date: string;
+  description: string;
+  responsibilities?: string[];
+  link?: string;
+  latest: boolean;
+}
+
+const EXPERIENCE: Experience[] = [
+  {
+    title: "Programming Assistant",
+    date: "Present",
+    description:
+      "Collaboration in the maintenance and continuous improvement of internal systems for institutional use.",
+    responsibilities: [
+      "Maintenance and improvement of internal applications used by the university community.",
+      "Development of new features based on user needs.",
+      "Version control using Git to support collaborative work.",
+      "Bug fixing and technical support for existing systems.",
+      "Collaboration with other developers to implement efficient and sustainable solutions.",
+      "Application of best development practices in an academic and professional environment.",
+    ],
+    link: "",
+    latest: true,
+  },
+];
+---
+
+<ul
+  class="relative w-full border-s border-black/40 dark:border-gray-700 flex flex-col gap-10"
+>
+  {EXPERIENCE.map((experience) => <ExperienceItem {...experience} />)}
+</ul>
