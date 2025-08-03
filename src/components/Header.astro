@@ -2,16 +2,79 @@
 import Theme from '../components/Theme.astro';
 ---
 
-<header id="mainHeader" class="w-full flex justify-center items-center py-5 px-4 sm:px-12 lg:px-48 fixed top-0 z-40 transition-all duration-300">
-  <nav class="flex gap-1 flex-wrap justify-center items-center">
-    <a href="#about" class="w-20 text-center hover:bg-[#0000000d] dark:hover:bg-[#ffffff0d] py-1 px-2 rounded-lg transition">About</a>
-    <a href="#experiences" class="w-30 text-center hover:bg-[#0000000d] dark:hover:bg-[#ffffff0d] py-1 px-2 rounded-lg transition">Experiences</a>
-    <a href="#studies" class="w-20 text-center hover:bg-[#0000000d] dark:hover:bg-[#ffffff0d] py-1 px-2 rounded-lg transition">Studies</a>
-    <a href="#projects" class="w-20 text-center hover:bg-[#0000000d] dark:hover:bg-[#ffffff0d] py-1 px-2 rounded-lg transition">Projects</a>
-    <a href="#contact" class="w-20 text-center hover:bg-[#0000000d] dark:hover:bg-[#ffffff0d] py-1 px-2 rounded-lg transition">Contact</a>
+<header id="mainHeader" class="w-full flex justify-center items-center py-5 min-h-12 px-4 sm:px-12 lg:px-48 fixed top-0 z-40 transition-all duration-300">
+  
+  <button
+    id="menu-toggle-btn"
+    class="sm:hidden z-50 p-2 absolute top-1 left-5 rounded-md hover:bg-[#0000000d] dark:hover:bg-[#ffffff0d] transition"
+    aria-label="Abrir menú"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </button>
+  
+  <nav id="navbar" class="hidden absolute sm:relative top-0 left-0 h-screen sm:h-auto w-full sm:w-auto
+    flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-1
+    pt-24 sm:pt-0 bg-white/90 dark:bg-black/90 backdrop-blur-sm 
+    sm:bg-transparent sm:dark:bg-transparent sm:backdrop-blur-none sm:flex">
+    <span
+      id="indicator"
+      class="absolute bottom-0 h-[2px] bg-black dark:bg-white transition-all duration-300"
+      style="width: 0; left: 0;"
+    ></span>
+    <a href="#about" class="nav-link w-20 text-center hover:bg-[#0000000d] dark:hover:bg-[#ffffff0d] py-1 px-2 rounded-lg transition">About</a>
+    <a href="#experiences" class="nav-link w-30 text-center hover:bg-[#0000000d] dark:hover:bg-[#ffffff0d] py-1 px-2 rounded-lg transition">Experiences</a>
+    <a href="#studies" class="nav-link w-20 text-center hover:bg-[#0000000d] dark:hover:bg-[#ffffff0d] py-1 px-2 rounded-lg transition">Studies</a>
+    <a href="#projects" class="nav-link w-20 text-center hover:bg-[#0000000d] dark:hover:bg-[#ffffff0d] py-1 px-2 rounded-lg transition">Projects</a>
+    <a href="#contact" class="nav-link w-20 text-center hover:bg-[#0000000d] dark:hover:bg-[#ffffff0d] py-1 px-2 rounded-lg transition">Contact</a>
   </nav>
-  <Theme />
+
+  <div class="z-50">
+    <Theme />
+  </div>
+
 </header>
+
+<script is:inline>
+  const indicator = document.getElementById('indicator');
+  const navLinks = document.querySelectorAll('#navbar .nav-link');
+  const navbar = document.getElementById('navbar'); // Referencia al nav
+
+  function moveIndicator(el) {
+    const rect = el.getBoundingClientRect();
+    const navRect = el.parentElement.getBoundingClientRect();
+    indicator.style.width = `${rect.width}px`;
+    indicator.style.left = `${rect.left - navRect.left}px`;
+  }
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      moveIndicator(e.currentTarget);
+      if (window.innerWidth < 640) { 
+        navbar.classList.add('hidden');
+      }
+    });
+  });
+
+  window.addEventListener('DOMContentLoaded', () => {
+    const current = document.querySelector('#navbar .nav-link');
+    if (current) moveIndicator(current);
+  });
+</script>
+
+<script is:inline>
+  const menuToggleBtn = document.getElementById('menu-toggle-btn');
+  const navbarMenu = document.getElementById('navbar');
+
+  if (menuToggleBtn && navbarMenu) {
+    menuToggleBtn.addEventListener('click', () => {
+      navbarMenu.classList.toggle('hidden');
+    });
+  }
+</script>
 
 <script>
   const header = document.getElementById('mainHeader') as HTMLElement;
