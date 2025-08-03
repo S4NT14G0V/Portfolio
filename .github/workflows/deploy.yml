@@ -1,40 +1,33 @@
-name: Deploy Astro site to GitHub Pages
+# Nombre del workflow que verás en la pestaña "Actions" de GitHub
+name: Deploy to GitHub Pages
 
 on:
+  # Se ejecuta cada vez que haces un push a la rama 'main'
   push:
     branches:
       - main
+  # Te permite ejecutar este workflow manualmente desde la pestaña Actions
+  workflow_dispatch:
 
+# Permisos necesarios para que el workflow pueda desplegar en GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
-concurrency:
-  group: "pages"
-  cancel-in-progress: true
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout your repository
+        uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 20
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build Astro site
-        run: npm run build
-
-      - name: Upload site artifact
-        uses: actions/upload-pages-artifact@v1
-        with:
-          path: dist
+      - name: Install, build, and upload your site
+        uses: withastro/action@v2
+        # with:
+          # path: . # La ruta a tu proyecto Astro, si no está en la raíz. Por defecto es '.'
+          # node-version: 20 # La versión de Node.js a usar. Por defecto es 20.
+          # pnpm-version: 8 # La versión de pnpm a usar. Descomenta si usas pnpm.
 
   deploy:
     needs: build
@@ -45,4 +38,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4
