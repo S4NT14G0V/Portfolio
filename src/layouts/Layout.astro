@@ -2,6 +2,10 @@
 import "../styles/global.css";
 import Header from "../components/Header.astro";
 import Background from "../components/Background.astro";
+
+const { lang } = Astro.props;
+
+const navItems = lang?.header?.navigation?.list ?? [];
 ---
 
 <!doctype html>
@@ -17,7 +21,7 @@ import Background from "../components/Background.astro";
     class="bg-white text-black dark:bg-black dark:text-white flex flex-col justify-center items-center relative"
   >
     <Background />
-    <Header />
+    <Header items={navItems}/>
     <slot />
   </body>
 </html>
@@ -29,3 +33,10 @@ import Background from "../components/Background.astro";
     box-sizing: border-box;
   }
 </style>
+
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    document.body.classList.add('loaded');
+  });
+</script>
+

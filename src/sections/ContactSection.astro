@@ -1,20 +1,29 @@
 ---
 import Actions from "../components/Actions.astro";
-const email = "santiagot3p@gmail.com";
+
+const { lang } = Astro.props;
+
+const title = lang?.contact?.title;
+const description = lang?.contact?.description;
+const firstLabel = lang?.contact?.labels?.first;
+const secondLabel = lang?.contact?.labels?.second;
+const email = lang?.contact?.email;
+const copy = lang?.contact?.copy;
+const actionsList = lang?.profile?.actions?.list ?? [];
+const id = lang?.contact?.id;
 ---
 
 <section
-  id="contact"
+  id={id}
   class="flex flex-col justify-center items-center gap-10 py-16 sm:py-32 w-full px-10 sm:w-1/2 min-h-screen z-20"
 >
-  <h2 class="text-3xl sm:text-4xl font-bold text-center">Contact Me</h2>
+  <h2 class="text-3xl sm:text-4xl font-bold text-center">{title}</h2>
   <p class="text-center text-black/70 dark:text-[#ccc] max-w-xl">
-    Got a question, a project idea, or just want to say hello? I’m always eager
-    to collaborate, solve challenges, or explore new opportunities together.
+    {description}
   </p>
 
   <div class="flex flex-col items-center gap-2">
-    <p class="text-black/90 dark:text-[#ccc] text-sm">Email me directly:</p>
+    <p class="text-black/90 dark:text-[#ccc] text-sm">{firstLabel}</p>
 
     <div
       class="flex items-center gap-3 bg-white/20 border-1 border-gray-200 dark:border-gray-700 dark:bg-black/20 px-4 py-2 rounded-xl select-none"
@@ -57,49 +66,41 @@ const email = "santiagot3p@gmail.com";
         </svg>
 
         <div class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-1 px-2 py-1 text-xs text-white bg-purple-900 dark:text-black dark:bg-purple-200 rounded opacity-0 group-hover:opacity-100 transition-opacity z-50 whitespace-nowrap pointer-events-none">
-            Copy
+            {copy}
         </div>
       </button>
     </div>
   </div>
 
   <div class="flex flex-col items-center gap-2">
-    <p class="text-black/90 dark:text-[#ccc] text-sm">Or use other ways:</p>
-    <Actions />
+    <p class="text-black/90 dark:text-[#ccc] text-sm">{secondLabel}</p>
+    <Actions actions={actionsList}/>
   </div>
 
   <script is:inline>
-    // Seleccionamos los elementos del DOM una sola vez
     const copyBtn = document.getElementById("copy-btn");
     const emailText = document.getElementById("email-text");
     const copyIcon = document.getElementById("copy-icon");
     const checkIcon = document.getElementById("check-icon");
 
-    // Función asíncrona para copiar
     async function copyEmail() {
-      // Usamos el elemento guardado previamente
       if (!emailText?.textContent) return;
 
       try {
-        // Copiamos al portapapeles
         await navigator.clipboard.writeText(emailText.textContent);
 
-        // Mostramos el ícono de "check" y ocultamos el de copiar
         copyIcon.style.opacity = "0";
         checkIcon.style.opacity = "1";
 
-        // Después de 2 segundos, revertimos la animación
         setTimeout(() => {
           checkIcon.style.opacity = "0";
           copyIcon.style.opacity = "1";
         }, 2000);
       } catch (err) {
         console.error("Failed to copy email: ", err);
-        // Opcional: mostrar un mensaje de error al usuario
       }
     }
 
-    // Añadimos el listener solo si el botón existe
     if (copyBtn) {
       copyBtn.addEventListener("click", copyEmail);
     }

@@ -1,8 +1,14 @@
 ---
 import Projects from '../components/Projects.astro';
+
+const { lang } = Astro.props;
+
+const title = lang?.projects?.title ?? "Titulo de Sección";
+const projects = lang?.projects?.list ?? [];
+const id = lang?.projects?.id;
 ---
 
-<section id="projects" class="flex flex-col justify-center items-center gap-16 py-16 sm:py-32 w-full px-10 sm:w-1/2 min-h-screen z-20">
-    <p class="text-2xl font-bold text-black/85 dark:text-white/85 z-20 text-center">Projects</p>
-    <Projects />
+<section id={id} class="flex flex-col justify-center items-center gap-8 py-16 sm:py-24 w-full px-10 sm:w-1/2 min-h-screen z-20">
+    <p class="text-2xl font-bold text-black/85 dark:text-white/85 z-20 text-center">{title}</p>
+    <Projects projects={projects}/>
 </section>

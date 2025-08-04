@@ -1,5 +1,6 @@
 ---
 import ProjectsItem from "./ProjectsItem.astro";
+import es from '../i18n/es.ts';
 
 interface Projects {
   title: string;
@@ -10,26 +11,9 @@ interface Projects {
   image: string;
 }
 
-const PROJECTS = [
-  {
-    title: "TaskFlow - Gestor de Tareas",
-    description:
-      "Aplicación web para gestionar tareas con soporte para múltiples listas, etiquetas, fechas límite y notificaciones.",
-    demo: "https://taskflow-demo.vercel.app",
-    github: "https://github.com/usuario/taskflow",
-    technologies: ["React", "TypeScript", "TailwindCSS", "Firebase", "Vite"],
-    image: "https://images.ctfassets.net/63bmaubptoky/dOFn7YASMuOtj7rc-RxDIxqIELosbz4WVCHtM4gG_oo/d41f285d2f03ba21a40e91a18cc7be41/Administrador-de-tareas-gratis-header.png"
-  },
-  {
-    title: "API REST para eCommerce",
-    description:
-      "Backend robusto para una tienda en línea con autenticación JWT, manejo de productos, categorías, órdenes y usuarios.",
-    github: "https://github.com/usuario/ecommerce-api",
-    technologies: ["Node.js", "Express", "MongoDB", "JWT", "Docker"],
-    image: "https://www.uac.edu.co/wp-content/uploads/2023/01/986a0a2d16bd26db6b55d4de1f874ec4.jpg"
-  },
-];
+const { projects } = Astro.props;
 
+const PROJECTS: Projects[] = projects;
 const SIZE = PROJECTS.length;
 const CLASSNAME = SIZE > 2 ? "flex-nowrap" : "flex-wrap";
 ---

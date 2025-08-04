@@ -3,23 +3,41 @@ import Badge from "../components/Badge.astro";
 import Actions from "../components/Actions.astro";
 import Location from "../components/Location.astro";
 import Image from "../components/Image.astro";
+
+const { lang } = Astro.props;
+
+const name = lang?.profile?.name;
+const descFirst = lang?.profile?.description?.first;
+const descRole = lang?.profile?.description?.role;
+const descLast = lang?.profile?.description?.last;
+const actionsList = lang?.profile?.actions?.list ?? [];
+const badgeLabel = lang?.profile?.badge?.label;
+const id = lang?.profile?.id;
 ---
 
-<section id="about" class="flex flex-col-reverse sm:gap-8 sm:flex-col-reverse lg:flex-row py-16 pt-32 w-full px-10 sm:w-1/2 min-h-screen">
+<section
+  id={id}
+  class="flex flex-col-reverse sm:gap-8 sm:flex-col-reverse lg:flex-row py-16 pt-32 w-full px-10 sm:w-1/2 min-h-screen"
+>
   <div class="flex-1 flex flex-col gap-8 justify-center">
     <div class="flex flex-col-reverse gap-6 sm:gap-4 text-center sm:text-start">
-      <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-black dark:text-[#ccc] z-30">
-        Santiago Trespalacios Bolivar
+      <h1
+        class="text-2xl sm:text-3xl lg:text-4xl font-bold text-black dark:text-[#ccc] z-30"
+      >
+        {name}
       </h1>
-      <Badge text="Available to Work" />
+      <Badge text={badgeLabel} />
     </div>
-    <p class="text-base sm:text-lg lg:text-xl text-black dark:text-[#ccc] text-pretty z-30">
-      I'm a <span class="font-bold dark:text-yellow-200 text-blue-600">Full Stack</span> developer driven by curiosity and a commitment to
-      building purposeful digital products. I approach each project with
-      attention to detail, aiming for code that is both maintainable and
-      efficient...
+    <p
+      class="text-base sm:text-lg lg:text-xl text-black dark:text-[#ccc] text-pretty z-30"
+    >
+      {descFirst}
+      <span class="font-bold dark:text-yellow-200 text-blue-600"
+        >{descRole}</span
+      >
+      {descLast}
     </p>
-    <Actions />
+    <Actions actions={actionsList}/>
     <Location />
   </div>
   <div class="flex justify-center items-center mt-8 lg:mt-0">

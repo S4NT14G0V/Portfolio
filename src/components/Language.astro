@@ -1,0 +1,49 @@
+---
+const pathParts = Astro.url.pathname.split('/');
+const langSegment = pathParts.includes('es') ? 'es' : 'en';
+const currentLang = langSegment;
+const targetLang = currentLang === 'es' ? 'en' : 'es';
+
+// Diccionarios con tipos explícitos
+const hashMap = {
+  "sobre-mi": "about-me",
+  "experiencia-laboral": "experience",
+  "estudios": "studies",
+  "proyectos": "projects",
+  "contacto": "contact",
+} as const;
+
+const reverseHashMap = {
+  "about-me": "sobre-mi",
+  "experience": "experiencia-laboral",
+  "studies": "estudios",
+  "projects": "proyectos",
+  "contact": "contacto",
+} as const;
+
+// Extraer el hash actual (sin "#")
+const currentHash = Astro.url.hash?.substring(1) || "";
+
+// Traducir el hash si es válido
+const translatedHash =
+  currentLang === "es"
+    ? hashMap[currentHash as keyof typeof hashMap] ?? ""
+    : reverseHashMap[currentHash as keyof typeof reverseHashMap] ?? "";
+
+// Construir el href final
+const targetHref =
+  "/Portfolio/" + targetLang + (translatedHash ? `#${translatedHash}` : "");
+---
+
+<a
+  id="toggle-language"
+  href={targetHref}
+  class="fixed top-2 sm:top-5 right-15 p-2 rounded-xl hover:bg-black/10 dark:hover:bg-white/10 z-30"
+  aria-label="Toggle Language"
+>
+  <img
+    src={`/Portfolio/icons/${targetLang === 'es' ? 'es' : 'us'}.svg`}
+    alt="Idioma"
+    class="w-5 h-5 rounded-xl"
+  />
+</a>

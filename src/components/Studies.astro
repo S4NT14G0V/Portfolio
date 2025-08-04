@@ -1,5 +1,6 @@
 ---
 import StudiesItem from "./StudiesItem.astro";
+import es from '../i18n/es.ts';
 
 interface Studies {
   title: string;
@@ -8,14 +9,9 @@ interface Studies {
   description: string;
 }
 
-const STUDIES: Studies[] = [
-  {
-    title: "Systems Engineering",
-    date: "2027",
-    location: "University of Antioquia | Medellín, Colombia.",
-    description: `I am currently pursuing a degree in Systems Engineering, where I have built a solid foundation in programming, data structures, databases, networking, and software development. The program combines theory and practical application, allowing me to work on academic projects and participate in initiatives that have strengthened my technical skills and my ability to solve real-world problems.`,
-  },
-];
+const { studies } = Astro.props;
+
+const STUDIES: Studies[] = studies;
 ---
 
 <ul

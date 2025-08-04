@@ -18,7 +18,7 @@ export const iconMap: Record<string, string> = {
     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32" width="20" height="20"><path d="M32 24.795c-1.164.296-1.884.013-2.53-.957l-4.594-6.356-.664-.88-5.365 7.257c-.613.873-1.256 1.253-2.4.944l6.87-9.222-6.396-8.33c1.1-.214 1.86-.105 2.535.88l4.765 6.435 4.8-6.4c.615-.873 1.276-1.205 2.38-.883l-2.48 3.288-3.36 4.375c-.4.5-.345.842.023 1.325L32 24.795zM.008 15.427l.562-2.764C2.1 7.193 8.37 4.92 12.694 8.3c2.527 1.988 3.155 4.8 3.03 7.95H1.48c-.214 5.67 3.867 9.092 9.07 7.346 1.825-.613 2.9-2.042 3.438-3.83.273-.896.725-1.036 1.567-.78-.43 2.236-1.4 4.104-3.45 5.273-3.063 1.75-7.435 1.184-9.735-1.248C1 21.6.434 19.812.18 17.9c-.04-.316-.12-.617-.18-.92q.008-.776.008-1.552zm1.498-.38h12.872c-.084-4.1-2.637-7.012-6.126-7.037-3.83-.03-6.58 2.813-6.746 7.037z"/></svg>
   `,
   MongoDB: `
-    <svg viewBox="0 0 256 549" xmlns="http://www.w3.org/2000/svg" width="32" height="20" preserveAspectRatio="xMidYMid"><path fill="#01EC64" d="M175.622 61.108C152.612 33.807 132.797 6.078 128.749.32a1.03 1.03 0 0 0-1.492 0c-4.048 5.759-23.863 33.487-46.874 60.788-197.507 251.896 31.108 421.89 31.108 421.89l1.917 1.28c1.704 26.234 5.966 63.988 5.966 63.988h17.045s4.26-37.54 5.965-63.987l1.918-1.494c.213.214 228.828-169.78 31.32-421.677Zm-47.726 418.05s-10.227-8.744-12.997-13.222v-.428l12.358-274.292c0-.853 1.279-.853 1.279 0l12.357 274.292v.428c-2.77 4.478-12.997 13.223-12.997 13.223Z"/></svg>
+    <svg viewBox="0 0 256 549" xmlns="http://www.w3.org/2000/svg" width="20" height="20" preserveAspectRatio="xMidYMid"><path fill="#01EC64" d="M175.622 61.108C152.612 33.807 132.797 6.078 128.749.32a1.03 1.03 0 0 0-1.492 0c-4.048 5.759-23.863 33.487-46.874 60.788-197.507 251.896 31.108 421.89 31.108 421.89l1.917 1.28c1.704 26.234 5.966 63.988 5.966 63.988h17.045s4.26-37.54 5.965-63.987l1.918-1.494c.213.214 228.828-169.78 31.32-421.677Zm-47.726 418.05s-10.227-8.744-12.997-13.222v-.428l12.358-274.292c0-.853 1.279-.853 1.279 0l12.357 274.292v.428c-2.77 4.478-12.997 13.223-12.997 13.223Z"/></svg>
   `,
   JWT: `
     <svg viewBox="0 0 256 257" width="20" height="20" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid"><path fill="#FFF" d="M147.386 69.071 147.129 0h-38.515l.257 69.071 19.257 26.448zM108.871 187.442v69.328h38.515v-69.328l-19.258-26.447z"/><path fill="#00F2E6" d="m147.386 187.442 40.57 55.976 31.069-22.596-40.57-55.975-31.069-10.015zM108.871 69.071 68.044 13.095 36.975 35.691l40.57 55.976 31.326 10.014z"/><path fill="#00B9F1" d="M77.545 91.667 11.811 70.355 0 106.816l65.733 21.569 31.069-10.271zM159.198 138.399l19.257 26.448 65.734 21.311L256 149.697l-65.733-21.312z"/><path fill="#D63AFF" d="M190.267 128.385 256 106.816l-11.811-36.461-65.734 21.312-19.257 26.447zM65.733 128.385 0 149.697l11.811 36.461 65.734-21.311 19.257-26.448z"/><path fill="#FB015B" d="m77.545 164.847-40.57 55.975 31.069 22.596 40.827-55.976v-32.61zM178.455 91.667l40.57-55.976-31.069-22.596-40.57 55.976v32.61z"/></svg>
@@ -52,9 +52,8 @@ export const iconMap: Record<string, string> = {
 ---
 
 <div
-  class="max-w-sm bg-white border border-gray-200 rounded-xl shadow-sm dark:bg-black/30 dark:backdrop-blur-2xl dark:border-gray-500 xl:flex-1 2xl:h-auto h-fit"
->
-  <div class="overflow-hidden w-full h-1/2 rounded-t-xl">
+  class="max-w-sm bg-white border border-gray-200 rounded-xl shadow-sm dark:bg-black/30 dark:backdrop-blur-2xl dark:border-gray-500 xl:flex-1 md:h-auto h-fit">
+  <div class="overflow-hidden w-full h-1/3 rounded-t-xl">
     <img
       class="w-full h-full object-cover rounded-t-xl transition-transform duration-300 ease-in-out transform hover:scale-110"
       src={image}
@@ -62,18 +61,18 @@ export const iconMap: Record<string, string> = {
     />
   </div>
 
-  <div class="p-5 flex flex-col justify-between h-1/2 gap-3 rounded-b-xl">
+  <div class="p-5 flex flex-col justify-between h-2/3 gap-3 rounded-b-xl">
     <div class="flex flex-col">
       <h5
-        class="mb-2 text-2xl font-bold tracking-tight text-black dark:text-white"
+        class="text-2xl font-bold tracking-tight text-black dark:text-white"
       >
         {title}
       </h5>
-      <p class="mb-3 font-normal text-black/70 dark:text-gray-400">
+      <p class="font-normal text-md text-black/70 dark:text-[#ccc]">
         {description}
       </p>
     </div>
-    <div class="flex flex-wrap gap-3 items-center">
+    <div class="flex flex-wrap gap-2 gap-y-0 items-center">
       {
         technologies.map((tech) =>
           iconMap[tech] ? (
@@ -82,7 +81,7 @@ export const iconMap: Record<string, string> = {
             >
               <div set:html={iconMap[tech]} />
 
-              <div class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-1 px-2 py-1 text-xs text-white bg-purple-900 dark:text-black dark:bg-purple-200 rounded opacity-0 group-hover:opacity-100 transition-opacity z-50 whitespace-nowrap pointer-events-none">
+              <div class="absolute bottom-full left-1/2 transform -translate-x-1/2 px-2 py-1 text-xs text-white bg-purple-900 dark:text-black dark:bg-purple-200 rounded opacity-0 group-hover:opacity-100 transition-opacity z-50 whitespace-nowrap pointer-events-none">
                 {tech}
               </div>
             </div>
