@@ -46,3 +46,5 @@ All commands are run from the root of the project, from a terminal:
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
 
 ![Friends Feature Preview GIF](https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExZWNqNmplaGppMzlmamtneXBzbDFmcTM3NXViaGd2Z2h6MTYwY3prNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/YG0Zt6chvplYitCMRO/giphy.gif)
+
+![Test Preview IMAGE](https://imgur.com/a/nIgbP6Y)
